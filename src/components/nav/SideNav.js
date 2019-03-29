@@ -3,7 +3,7 @@ import { Redirect, Link, Route } from "react-router-dom"
 import M from "materialize-css/dist/js/materialize.min.js";
 
 
-
+//entire side nav needs to be reconfigured
 
 
 
