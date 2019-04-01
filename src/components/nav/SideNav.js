@@ -32,11 +32,11 @@ export default class SideNav extends Component {
     <a href="#name"><span className="white-text name">John Doe</span></a>
     <a href="#email"><span className="white-text email">jdandturk@gmail.com</span></a>
   </div></li>
-  <li><Link><i className="material-icons">cloud</i>First Link With Icon</Link></li>
-  <li><Link>Second Link</Link></li>
+  <li><Link to="/reminders">Reminders</Link></li>
+  <li><Link to="/">Second Link</Link></li>
   <li><div className="divider"></div></li>
   <li><a className="subheader">Subheader</a></li>
-  <li><Link className="waves-effect" >Third Link With Waves</Link></li>
+  <li><Link to="/" className="waves-effect" >Third Link With Waves</Link></li>
 </ul>
 <a href="#" data-target="slide-out" className="sidenav-trigger"><i className="material-icons">menu</i></a>
 </React.Fragment>

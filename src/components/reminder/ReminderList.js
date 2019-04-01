@@ -9,7 +9,7 @@ export default class ReminderList extends Component {
           <h2 className="header">Horizontal Card</h2>
           <div className="card horizontal">
             <div className="card-image">
-              <img src="https://media1.giphy.com/media/wKQRIoFXsQIGA/giphy.webp" />
+              <img src="https://media0.giphy.com/media/7eAvzJ0SBBzHy/giphy.gif" />
             </div>
             <div className="card-stacked">
               <div className="card-content">

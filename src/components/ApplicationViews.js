@@ -16,10 +16,10 @@ export default class ApplicationViews extends Component {
         return(
             <React.Fragment>
             <Route exact path="/" render={props => {
-                return <WelcomePage />
+                return <WelcomePage {...props} />
             }} />
             <Route path="/reminders" render={props => {
-                return <ReminderList />
+                return <ReminderList {...props} />
             }} />
             </React.Fragment>
         )

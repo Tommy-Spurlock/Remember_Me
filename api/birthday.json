@@ -1,3 +1,27 @@
 {
+  "users": [
+      {
+          "id": 1,
+          "name": "Jason Mark",
+          "username": "jmark",
+          "email": "jmark@aol.com",
+          "password": 123,
+          "birthdate": "03/29'1999"
 
+      }
+
+  ],
+  "reminders": [
+    {
+        "id": 1,
+        "name": "Jarrett Mark",
+        "notes": "jetmark",
+        "email": "jmark@aol.com",
+        "phoneNumber": "123-456-7899",
+        "birthdate": "03/29'1993",
+        "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzN7hQbLu8SGul90h84N3fkXGYV9BUUIytUHQli_7hBmJRZXbS",
+        "userId": 1
+    }
+  ],
+  "colorSchemes": []
 }
