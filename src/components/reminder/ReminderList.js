@@ -4,18 +4,33 @@ export default class ReminderList extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="container">
+        {this.props.reminders.map(reminder =>
+        <div key={reminder.id}className="container">
         <div className="col s12 m7">
-          <h2 className="header">Horizontal Card</h2>
+          <h2 className="header">Birthday Alert: {reminder.birthdate}</h2>
           <div className="card horizontal">
             <div className="card-image">
-              <img src="https://media0.giphy.com/media/7eAvzJ0SBBzHy/giphy.gif" />
+              <img src={reminder.imageURL} />
             </div>
             <div className="card-stacked">
               <div className="card-content">
                 <p>
-                  I am a very simple card. I am good at containing small bits of
-                  information.
+                   {reminder.name}
+                </p>
+              </div>
+              <div className="card-content">
+                <p>
+                   {reminder.phoneNumber}
+                </p>
+              </div>
+              <div className="card-content">
+                <p>
+                   {reminder.email}
+                </p>
+              </div>
+              <div className="notes card-content">
+                <p>
+                   {reminder.notes}
                 </p>
               </div>
               <div className="card-action">
@@ -25,6 +40,7 @@ export default class ReminderList extends Component {
           </div>
         </div>
         </div>
+        )}
       </React.Fragment>
     );
   }

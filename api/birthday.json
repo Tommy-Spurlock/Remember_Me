@@ -18,9 +18,19 @@
         "notes": "jetmark",
         "email": "jmark@aol.com",
         "phoneNumber": "123-456-7899",
-        "birthdate": "03/29'1993",
+        "birthdate": "03/29/1993",
         "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzN7hQbLu8SGul90h84N3fkXGYV9BUUIytUHQli_7hBmJRZXbS",
         "userId": 1
+    },
+    {
+      "id": 2,
+      "name": "Terry Smith",
+      "notes": "OMG Terry is my best friend yall. I cannot even begin to tell you how lit we are about to get for her birthday! Turn uppppp!!!!",
+      "email": "Terrymack@aol.com",
+      "phoneNumber": "123-456-7899",
+      "birthdate": "03/12/1999",
+      "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT66fYmofwguTkyaknOKlIANp39kQQ11413fMw6IeIxoJQiHHp",
+      "userId": 1
     }
   ],
   "colorSchemes": []
