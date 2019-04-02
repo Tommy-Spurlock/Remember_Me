@@ -4,6 +4,8 @@ import WelcomePage from "./nav/WelcomePage"
 import ReminderList from "./reminder/ReminderList"
 import ReminderAPIManager from "../modules/ReminderManager"
 import UserAPIManager from "../modules/UserManager"
+import Auth0Client from "./authentication/Auth";
+import Callback from "./authentication/Callback"
 
 
 
@@ -34,12 +36,22 @@ export default class ApplicationViews extends Component {
     render() {
         return(
             <React.Fragment>
+
+            <Route exact path="/callback" component={Callback} />
+
+
             <Route exact path="/" render={props => {
                 return <WelcomePage {...props} />
             }} />
             <Route path="/reminders" render={props => {
-                return <ReminderList {...props} reminders={this.state.reminders} />
-            }} />
+               if (Auth0Client.isAuthenticated()) {
+                return <ReminderList {...props} reminders={this.state.reminders} />;
+              } else {
+                Auth0Client.signIn();
+                return null;
+              }
+            }}
+          />
             </React.Fragment>
         )
 }
