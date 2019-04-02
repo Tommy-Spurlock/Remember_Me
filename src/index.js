@@ -6,9 +6,8 @@ import Birthday from "./components/Birthday"
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<Router>
-    <Birthday />
-</Router>
-, document.getElementById('root'));
+                    <Birthday />
+                </Router>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
