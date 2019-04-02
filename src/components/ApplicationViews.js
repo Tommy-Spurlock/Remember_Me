@@ -2,7 +2,7 @@ import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import WelcomePage from "./nav/WelcomePage"
 import ReminderList from "./reminder/ReminderList"
-import ReminderAPIManager from "../modules/ReminderManager"
+import ReminderManager from "../modules/ReminderManager"
 import UserAPIManager from "../modules/UserManager"
 import Auth0Client from "./authentication/Auth";
 import Callback from "./authentication/Callback"
@@ -15,20 +15,24 @@ export default class ApplicationViews extends Component {
         users: [],
         reminders: [],
         colorSchemes: [],
-        // activeUser: sessionStorage.getItem("activeUser"),
+        activeUser: sessionStorage.getItem("credentials"),
         // currentUsername: ""
       }
 
-      componentDidMount() {
+
+      runOnLogin = () => {
+        const activeUser = sessionStorage.getItem("credentials")
+        this.setState({ activeUser: activeUser })
         const newState = {}
 
-          UserAPIManager.getAll()
-          .then(users => newState.users = users)
-          .then(ReminderAPIManager.getAll)
+
+        ReminderManager.getAll(this.state.activeUser)
           .then(reminders => newState.reminders = reminders)
           .then(() => this.setState(newState))
+      }
 
-
+      componentDidMount() {
+        this.runOnLogin()
       }
 
 
@@ -37,7 +41,9 @@ export default class ApplicationViews extends Component {
         return(
             <React.Fragment>
 
-            <Route exact path="/callback" component={Callback} />
+            <Route exact path="/callback" render={props => {
+                return <Callback runOnLogin={this.runOnLogin} />
+            }}/>
 
 
             <Route exact path="/" render={props => {

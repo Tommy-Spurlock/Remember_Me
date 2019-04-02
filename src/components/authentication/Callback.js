@@ -47,6 +47,8 @@ class Callback extends Component {
             matchingUser[0].id
           );
           sessionStorage.setItem("credentials", matchingUser[0].id);
+          this.props.runOnLogin()
+
         }
       });
     this.props.history.replace("/reminders");
