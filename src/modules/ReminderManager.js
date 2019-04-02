@@ -4,7 +4,7 @@ export default {
   get(id) {
     return fetch(`${remoteURL}/reminders/${id}`).then(e => e.json())
   },
-  getAll() {
-    return fetch(`${remoteURL}/reminders`).then(e => e.json())
-  },
+  getAll(id) {
+    return fetch(`${remoteURL}/reminders/?userId=${id}`).then(r => r.json())
+}
 }

@@ -1,26 +1,31 @@
 {
   "users": [
-      {
-          "id": 1,
-          "name": "Jason Mark",
-          "username": "jmark",
-          "email": "jmark@aol.com",
-          "password": 123,
-          "birthdate": "03/29'1999"
-
-      }
-
+    {
+      "aud": "auth0|5ca36c82c17c9210cf49495d",
+      "name": "t",
+      "id": 1
+    },
+    {
+      "aud": "auth0|5ca37f77839d9f109ad0d1ec",
+      "name": "m",
+      "id": 2
+    },
+    {
+      "aud": "auth0|5ca3a06f157fbc10e6cd7bb9",
+      "name": "a",
+      "id": 3
+    }
   ],
   "reminders": [
     {
-        "id": 1,
-        "name": "Jarrett Mark",
-        "notes": "jetmark",
-        "email": "jmark@aol.com",
-        "phoneNumber": "123-456-7899",
-        "birthdate": "03/29/1993",
-        "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzN7hQbLu8SGul90h84N3fkXGYV9BUUIytUHQli_7hBmJRZXbS",
-        "userId": 1
+      "id": 1,
+      "name": "Jarrett Mark",
+      "notes": "jetmark",
+      "email": "jmark@aol.com",
+      "phoneNumber": "123-456-7899",
+      "birthdate": "03/29/1993",
+      "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzN7hQbLu8SGul90h84N3fkXGYV9BUUIytUHQli_7hBmJRZXbS",
+      "userId": 1
     },
     {
       "id": 2,
@@ -30,7 +35,7 @@
       "phoneNumber": "123-456-7899",
       "birthdate": "03/12/1999",
       "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT66fYmofwguTkyaknOKlIANp39kQQ11413fMw6IeIxoJQiHHp",
-      "userId": 1
+      "userId": 2
     }
   ],
   "colorSchemes": []
