@@ -19,7 +19,9 @@ class Callback extends Component {
           // Create a new user object to post to the db
           const newUser = {
             aud: auth0Client.getProfile().sub,
-            name: auth0Client.getProfile().nickname
+            name: auth0Client.getProfile().nickname,
+            birthdate:"",
+            nickname:""
           };
 
           // Post it!!
@@ -39,6 +41,8 @@ class Callback extends Component {
                 parsedUser
               );
               sessionStorage.setItem("credentials", parsedUser.id);
+              this.props.history.replace("/reminders");
+
             });
         } else {
           // If something DOES come back from the fetch call (i.e. the array has a user in it), that means the user already exists in our db and we just need to log them in
@@ -48,10 +52,11 @@ class Callback extends Component {
           );
           sessionStorage.setItem("credentials", matchingUser[0].id);
           this.props.runOnLogin()
+          this.props.history.replace("/reminders");
+
 
         }
       });
-    this.props.history.replace("/reminders");
   }
 
   render() {

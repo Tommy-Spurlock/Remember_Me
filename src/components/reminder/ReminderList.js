@@ -4,6 +4,8 @@ export default class ReminderList extends Component {
   render() {
     return (
       <React.Fragment>
+          <button data-target="modal1" class="btn modal-trigger">Modal</button>
+
         {this.props.reminders.map(reminder =>
         <div key={reminder.id}className="container">
         <div className="col s12 m7">

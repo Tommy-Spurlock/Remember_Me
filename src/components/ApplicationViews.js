@@ -32,7 +32,7 @@ export default class ApplicationViews extends Component {
       }
 
       componentDidMount() {
-        this.runOnLogin()
+        // this.runOnLogin()
       }
 
 
