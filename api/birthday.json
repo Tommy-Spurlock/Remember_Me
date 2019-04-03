@@ -36,6 +36,66 @@
       "birthdate": "03/12/1999",
       "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT66fYmofwguTkyaknOKlIANp39kQQ11413fMw6IeIxoJQiHHp",
       "userId": 2
+    },
+    {
+      "name": "Jill Carperter",
+      "birthdate": "1985-01-14",
+      "email": "jc@cool.com",
+      "phoneNumber": "123-456-4585",
+      "notes": "Jill is a cool cat. My sisters oldest friend. Definitely gets a shout out.",
+      "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTQlLtUA1PZIWflQd7ck8ZIkO5XhBvGseRflORFk5AqUK1hGPw",
+      "userId": 1,
+      "id": 3
+    },
+    {
+      "name": "Steve Maker",
+      "birthdate": "2001-07-12",
+      "email": "steve@steve.com",
+      "phoneNumber": "789-456-9636",
+      "notes": "Steve is a chill young dude. Plays ball at the rec. Send him love.",
+      "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcUddPIZqy4Y3L9keJbdi8AvlluX1yeMm_M62jv1GaWWEqEBsx",
+      "userId": 1,
+      "id": 4
+    },
+    {
+      "name": "Barry Wright",
+      "birthdate": "2019-04-04",
+      "email": "",
+      "phoneNumber": "114-741-9963",
+      "notes": "Friends baby. Should celebrate with them. ",
+      "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdMeG4bmF7ZnlbS-OkN9W8pf8V9Bs-TgUz2sJTOUjYHa7ytLHJ7g",
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "name": "Bill Gloss",
+      "birthdate": "2019-04-11",
+      "email": "asfasfaf@asf.com",
+      "phoneNumber": "456465513",
+      "notes": "as;klfhlkasfu jlaksdn liaf hkankhjnsamg akjnaslkfna,.mfn",
+      "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMf5jBto_3NDNTcNN0YgiFOK0Gcn_anTTKqr8-ZhUKanNzwGcl",
+      "userId": 1,
+      "id": 6
+    },
+    {
+      "name": "asfasdfasfsadf",
+      "birthdate": "2019-04-06",
+      "email": "",
+      "phoneNumber": "asfasdfasfasf",
+      "notes": "asdfasdfsadfasfsadfsadf",
+      "imageURL": "",
+      "userId": 1,
+      "id": 7
+    },
+    {
+      "name": "qriqwpoiru oqiurpoqiuwroipu",
+      "birthdate": "",
+      "email": "",
+      "phoneNumber": "6543248965465324",
+      "notes": "iuqrpoiquwrpoqiurpoiqwurpoiqurpoqwer",
+      "imageURL": "",
+      "userId": 1,
+      "id": 8
     }
   ],
   "colorSchemes": []
