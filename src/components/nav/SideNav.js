@@ -33,8 +33,8 @@ export default class SideNav extends Component {
             <React.Fragment>
   <ul id="slide-out" className="sidenav">
   <li><Link to="/reminders">Reminders</Link></li>
-  <li><Link to="/">Calender</Link></li>
-  <li><Link to="/" className="waves-effect" >Settings</Link></li>
+  <li><Link to="/calendar">Calender</Link></li>
+  <li><Link to="/settings" className="waves-effect" >Settings</Link></li>
 </ul>
 <a href="#" data-target="slide-out" className="sidenav-trigger"><i className="material-icons">menu</i></a>
 </React.Fragment>
