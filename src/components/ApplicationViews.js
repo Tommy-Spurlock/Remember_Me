@@ -19,6 +19,32 @@ export default class ApplicationViews extends Component {
         // currentUsername: ""
       }
 
+    addReminder = reminder =>
+       ReminderManager.post(reminder)
+        .then(() => ReminderManager.getAll(sessionStorage.getItem("credentials")))
+        .then(reminders =>
+          this.setState({
+           reminders: reminders
+        })
+        );
+
+        deleteReminder = id =>
+          ReminderManager.delete(id)
+          .then(() => ReminderManager.getAll(sessionStorage.getItem("credentials")))
+          .then(reminders => this.setState({
+              reminders: reminders
+          })
+        )
+        updateReminder = (editedreminderObject) => {
+          return ReminderManager.edit(editedreminderObject)
+          .then(() => ReminderManager.getAll(sessionStorage.getItem("credentials")))
+          .then(reminders => {
+            this.setState({
+              reminders: reminders
+            })
+          });
+        };
+
 
       runOnLogin = () => {
         const activeUser = sessionStorage.getItem("credentials")
@@ -32,7 +58,7 @@ export default class ApplicationViews extends Component {
       }
 
       componentDidMount() {
-        // this.runOnLogin()
+        this.runOnLogin()
       }
 
 
@@ -51,7 +77,11 @@ export default class ApplicationViews extends Component {
             }} />
             <Route path="/reminders" render={props => {
                if (Auth0Client.isAuthenticated()) {
-                return <ReminderList {...props} reminders={this.state.reminders} />;
+                return <ReminderList {...props} reminders={this.state.reminders}
+                addReminder={this.addReminder}
+                deleteReminder={this.deleteReminder}
+                updateReminder={this.updateReminder}
+                />;
               } else {
                 Auth0Client.signIn();
                 return null;

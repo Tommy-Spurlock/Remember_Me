@@ -41,7 +41,6 @@ class Callback extends Component {
                 parsedUser
               );
               sessionStorage.setItem("credentials", parsedUser.id);
-              this.props.history.replace("/reminders");
 
             });
         } else {
@@ -52,11 +51,13 @@ class Callback extends Component {
           );
           sessionStorage.setItem("credentials", matchingUser[0].id);
           this.props.runOnLogin()
-          this.props.history.replace("/reminders");
+
 
 
         }
       });
+      this.props.history.replace("/reminders");
+
   }
 
   render() {

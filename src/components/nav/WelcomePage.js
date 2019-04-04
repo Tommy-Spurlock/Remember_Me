@@ -8,12 +8,10 @@ export default class WelcomePage extends Component {
         <div className="container">
         <div className="card  welcome  ">
         <div className="card-image waves-effect waves-block waves-light">
-          <img className="activator" src="https://i.imgur.com/KOXOBiN.gif" />
+        <h1>Welcome to Remember Me:</h1>
+        <h1>Birthday Reminders</h1>
         </div>
-        <div className="card-content">
-          <span className="card-title activator grey-text text-darken-4">Card Title<i className="material-icons right">more_vert</i></span>
-          <p><Link to="/reminders">This is a link</Link></p>
-        </div>
+
         <div className="card-reveal">
           <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
           <p>Here is some more information about this product that is only revealed once clicked on.</p>

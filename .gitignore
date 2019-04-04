@@ -27,3 +27,6 @@ birthday.json
 
 # authentication
 AuthConfig.js
+
+#modalEditForm
+modalEditForm.js
