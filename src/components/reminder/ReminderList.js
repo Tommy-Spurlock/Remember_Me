@@ -3,6 +3,9 @@ import ModalForm from './ModalForm'
 import ModalEditForm from './ModalEditForm'
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
+import Moment from 'react-moment';
+import moment from 'moment'
+
 
 export default class ReminderList extends Component {
   state = {
@@ -104,21 +107,6 @@ componentDidMount() {
   // instance.close();
   // instance.destroy();
 
-
-  // ReminderManager.get(this.props.match.params.reminderId)
-  // .then(reminder => {
-  //     this.setState({
-  //         name: reminder.name,
-  //         birthdate: reminder.bir  thdate,
-  //         email: reminder.email,
-  //         phoneNumber: reminder.phoneNumber,
-  //         notes: reminder.notes,
-  //         imageURL: reminder.imageURL,
-  //         userId: parseInt(sessionStorage.getItem("credentials"))
-
-  //     })
-  // })
-
 }
 
 
@@ -126,14 +114,16 @@ componentDidMount() {
 
 
   render() {
+    console.log(this.props.reminders[0].birthdate.split("-").slice(1).join("-"))
+
     return (
       <React.Fragment>
           <button data-target="modal1" className="btn modal-trigger">Add Reminder</button>
 
-        {this.props.reminders.map(reminder =>
+        {this.props.reminders.sort((a, b) => a.birthdate > b.birthdate ? 1 : -1).map(reminder =>
         <div key={reminder.id}className="container">
         <div className="col s12 m7">
-          <h2 className="header">Birthday Alert: {reminder.birthdate}</h2>
+          <h2 className="header">Birthday Alert: <Moment format="MM/DD/YYYY">{reminder.birthdate}</Moment></h2>
           <div className="card horizontal">
             <div className="card-image">
               <img src={reminder.imageURL} />
