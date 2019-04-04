@@ -37,7 +37,7 @@ export default class ApplicationViews extends Component {
         )
         updateReminder = (editedreminderObject) => {
           return ReminderManager.edit(editedreminderObject)
-          .then(() => ReminderManager.getAll())
+          .then(() => ReminderManager.getAll(sessionStorage.getItem("credentials")))
           .then(reminders => {
             this.setState({
               reminders: reminders
@@ -58,7 +58,7 @@ export default class ApplicationViews extends Component {
       }
 
       componentDidMount() {
-        // this.runOnLogin()
+        this.runOnLogin()
       }
 
 

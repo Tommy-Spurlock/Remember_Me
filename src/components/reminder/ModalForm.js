@@ -45,7 +45,7 @@ class Modal extends Component {
 
           };
 
-          // Create the animal and redirect user to animal list
+          // Create the reminder and redirect user to reminder list
           this.props
             .addreminder(reminder)
              .then(() => this.setState(newstate));

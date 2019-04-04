@@ -49,7 +49,7 @@ class ModalEditForm extends Component {
 
           };
 
-          // Create the animal and redirect user to animal list
+          // Create the reminder and redirect user to reminder list
           this.props
             .updateReminder(editedreminder)
              .then(() => this.setState(newstate));
@@ -132,7 +132,7 @@ class ModalEditForm extends Component {
     <form className="col s12">
       <div className="row">
         <div className="input-field col s6">
-          <input  id="name" type="text" className="validate" value={this.props.name} onChange={this.handleFieldChange}/>
+          <input  id="name" type="text" className="validate" value={this.state.name} onChange={this.handleFieldChange}/>
           <label htmlFor="name">Name</label>
         </div>
         <div className="input-field col s6">
