@@ -1,7 +1,6 @@
 import React, { Component } from "react"
-import { Redirect, Link, Route } from "react-router-dom"
+import { Link } from "react-router-dom"
 import M from "materialize-css/dist/js/materialize.min.js";
-import UserManager from "../../modules/UserManager"
 
 
 

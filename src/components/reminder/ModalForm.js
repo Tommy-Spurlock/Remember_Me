@@ -147,12 +147,12 @@ class Modal extends Component {
 
           </div>
           <div className="modal-footer">
-            <a href="#" className="modal-close waves-effect waves-red btn-flat" onClick={this.clearState}>
+            <button className="modal-close waves-effect waves-red btn-flat" onClick={this.clearState}>
               Cancel
-            </a>
-            <a href="#" className="modal-close waves-effect waves-green btn-flat" onClick={this.constructNewReminder}>
+            </button>
+            <button className="modal-close waves-effect waves-green btn-flat" onClick={this.constructNewReminder}>
               Save
-            </a>
+            </button>
           </div>
         </div>
       </>

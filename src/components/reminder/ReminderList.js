@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ModalForm from './ModalForm'
-import ModalEditForm from './ModalEditForm'
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
 import Moment from 'react-moment';
@@ -109,19 +108,44 @@ componentDidMount() {
 
 }
 
+ dayCheck = (date) => {
+  var thisYear = moment().year();
+  var mom = moment(date).year(thisYear);
+  return mom.calendar(null, {
+    sameDay: '[Today]',
+    nextDay: '[Tomorrow]',
+    nextWeek: 'dddd',
+    lastDay: '[Yesterday]',
+    lastWeek: '[Last] dddd',
+    sameElse: 'DD/MM/YYYY'
+  });
+}
 
 
 
+
+today = () => { if((new Date().getMonth() + 1) < 10 && new Date().getDate() < 10){
+  return `0${new Date().getMonth() + 1}-0${new Date().getDate()}`
+} else if ((new Date().getMonth() + 1) < 10 && new Date().getDate() >= 10){
+  return `0${new Date().getMonth() + 1}-${new Date().getDate()}`
+} else if ((new Date().getMonth() + 1) >= 10 && new Date().getDate() < 10){
+  return `${new Date().getMonth() + 1}-0${new Date().getDate()}`
+} else if ((new Date().getMonth() + 1) >= 10 && new Date().getDate() >= 10){
+  return `${new Date().getMonth() + 1}-${new Date().getDate()}`
+}
+
+}
 
   render() {
-    console.log(this.props.reminders[0].birthdate.split("-").slice(1).join("-"))
-
+      const now = moment(new Date())
     return (
       <React.Fragment>
           <button data-target="modal1" className="btn modal-trigger">Add Reminder</button>
+          <Moment from={this.today}>{"2019-11-9"} </Moment>
 
-        {this.props.reminders.sort((a, b) => a.birthdate > b.birthdate ? 1 : -1).map(reminder =>
+        {this.props.reminders.sort((a, b) => a.birthdate.split("-").splice(1).join("-") > b.birthdate.split("-").splice(1).join("-") ? 1 : -1).map(reminder =>
         <div key={reminder.id}className="container">
+
         <div className="col s12 m7">
           <h2 className="header">Birthday Alert: <Moment format="MM/DD/YYYY">{reminder.birthdate}</Moment></h2>
           <div className="card horizontal">

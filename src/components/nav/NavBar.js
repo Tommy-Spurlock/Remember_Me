@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect, Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import auth0Client from "../authentication/Auth";
 
 export default class NavBar extends Component {
@@ -17,23 +17,23 @@ export default class NavBar extends Component {
             Remember Me?
           </Link>
           {!auth0Client.isAuthenticated() ? (
-            <a className="waves-effect waves-light btn right" onClick={auth0Client.signIn}>
+            <button className="waves-effect waves-light btn right" onClick={auth0Client.signIn}>
               Sign In
-            </a>
+            </button>
           ) : (
             <React.Fragment>
 
               <ul id="nav-mobile" className="right hide-on-med-and-down">
                 {/* Routes go here */}
                 <li><input type="text" placeholder="Search" /></li>
-              <li> <a
+              <li> <button
                 className="waves-effect waves-light btn right"
                 onClick={() => {
                   this.signOut();
                 }}
               >
                 Sign Out
-              </a></li>
+              </button></li>
 
               </ul>
 
