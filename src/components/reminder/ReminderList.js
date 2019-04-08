@@ -134,17 +134,50 @@ today = () => { if((new Date().getMonth() + 1) < 10 && new Date().getDate() < 10
   return `${new Date().getMonth() + 1}-${new Date().getDate()}`
 }
 
+
 }
+// sortMe = () => {
+
+//   const r = moment(new Date())
+
+// if(moment(a.birthdayThisYear).isBefore(r)) {
+//   moment(a.birthdayThisYear).add(1, 'y')
+//   return r.diff(a.birthdayThisYear) < r.diff(b.birthdayThisYear) ? 1 : -1
+// }
+//   return r.diff(a.birthdayThisYear) < r.diff(b.birthdayThisYear) ? 1 : -1
+// }
 
   render() {
-      const now = moment(new Date())
+      const r = moment()
+
+      const futureBdays = this.props.reminders.filter(reminder => moment(reminder.birthdayThisYear).isSameOrAfter(r)).sort((a,b) => r.diff(a.birthdayThisYear) < r.diff(b.birthdayThisYear) ? 1 : -1)
+  const pastBdays = this.props.reminders.filter(reminder =>moment(reminder.birthdayThisYear).isBefore(r))
+  .map(reminder => {
+ return  {
+   birthdayThisYear: moment(reminder.birthdayThisYear).add(1, 'y').format("YYYY-MM-DD"),
+    name: reminder.name,
+   phoneNumber: reminder.phoneNumber,
+    birthdate: reminder.birthdate,
+    imageURL: reminder.imageURL,
+    email: reminder.email,
+    notes: reminder.notes,
+    id: reminder.id,
+    userId: reminder.userId,
+}})
+.sort((a,b) => r.diff(moment(a.birthdayThisYear).add(1, 'y')) < r.diff(moment(b.birthdayThisYear).add(1, 'y')) ? 1 : -1)
+    console.log(pastBdays)
+     const allTogetherNow = () => futureBdays.concat(' ', pastBdays)
+
     return (
       <React.Fragment>
           <button data-target="modal1" className="btn modal-trigger">Add Reminder</button>
-          <Moment from={this.today}>{"2019-11-9"} </Moment>
 
-        {this.props.reminders.sort((a, b) => a.birthdate.split("-").splice(1).join("-") > b.birthdate.split("-").splice(1).join("-") ? 1 : -1).map(reminder =>
-        <div key={reminder.id}className="container">
+        {/* {this.props.reminders.sort((a, b) => a.birthdate.split("-").splice(1).join("-") > b.birthdate.split("-").splice(1).join("-") ? 1 : -1).map(reminder =>
+        <div key={reminder.id}className="container"> */}
+
+{allTogetherNow().map(reminder =>
+        <div key={reminder.id} className="container">
+
 
         <div className="col s12 m7">
           <h2 className="header">Birthday Alert: <Moment format="MM/DD/YYYY">{reminder.birthdate}</Moment></h2>
@@ -264,3 +297,17 @@ today = () => { if((new Date().getMonth() + 1) < 10 && new Date().getDate() < 10
     );
   }
 }
+
+
+
+
+
+
+
+// .sort((a,b) => {if(moment(a.birthdayThisYear).isBefore(r)) {
+//   let addOne = moment(a.birthdayThisYear).add(1, 'y')
+//   console.log(addOne, "anything just someting")
+//   debugger;
+//   return r.diff(addOne) < r.diff(b.birthdayThisYear)  ? 1 : -1
+// } else {
+//   return r.diff(a.birthdayThisYear) < r.diff(b.birthdayThisYear) ? 1 : -1}})
