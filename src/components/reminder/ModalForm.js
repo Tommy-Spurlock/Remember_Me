@@ -37,7 +37,7 @@ class Modal extends Component {
           const reminder = {
             name: this.state.name,
             birthdate: moment(this.state.birthdate,).format("YYYY-MM-DD"),
-            birthdayThisYear: moment(this.state.birthdate,).year(`${new Date()}`).format("YYYY-MM-DD"),
+            birthdayThisYear: moment(this.state.birthdate,).year(`${new Date().getFullYear()}`).format("YYYY-MM-DD"),
             email: this.state.email,
             phoneNumber: this.state.phoneNumber,
             notes: this.state.notes,

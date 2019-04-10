@@ -33,6 +33,7 @@ export default class SideNav extends Component {
   <ul id="slide-out" className="sidenav">
   <li><Link to="/reminders">Reminders</Link></li>
   <li><Link to="/calendar">Calender</Link></li>
+  <li><Link to="/celebrities">Celebrities</Link></li>
   <li><Link to="/settings" className="waves-effect" >Settings</Link></li>
 </ul>
 <a href="#" data-target="slide-out" className="sidenav-trigger"><i className="material-icons">menu</i></a>

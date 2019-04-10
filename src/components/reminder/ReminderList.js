@@ -8,6 +8,7 @@ import moment from 'moment'
 
 export default class ReminderList extends Component {
   state = {
+  search: "",
   id: "",
   name: "",
   birthdate: "",
@@ -17,16 +18,7 @@ export default class ReminderList extends Component {
   imageURL: "",
   userId: parseInt(sessionStorage.getItem("credentials"))
 }
-state = {
-  id: "",
-  name: "",
-  birthdate: "",
-  email: "",
-  phoneNumber: "",
-  notes: "",
-  imageURL: "",
-  userId: parseInt(sessionStorage.getItem("credentials"))
-}
+
 
 
 
@@ -52,6 +44,7 @@ updateReminder = evt => {
       id: this.state.id,
       name: this.state.name,
       birthdate: this.state.birthdate,
+      birthdayThisYear: moment(this.state.birthdate,).year(`${new Date().getFullYear()}`).format("YYYY-MM-DD"),
       email: this.state.email,
       phoneNumber: this.state.phoneNumber,
       notes: this.state.notes,
@@ -136,20 +129,10 @@ today = () => { if((new Date().getMonth() + 1) < 10 && new Date().getDate() < 10
 
 
 }
-// sortMe = () => {
-
-//   const r = moment(new Date())
-
-// if(moment(a.birthdayThisYear).isBefore(r)) {
-//   moment(a.birthdayThisYear).add(1, 'y')
-//   return r.diff(a.birthdayThisYear) < r.diff(b.birthdayThisYear) ? 1 : -1
-// }
-//   return r.diff(a.birthdayThisYear) < r.diff(b.birthdayThisYear) ? 1 : -1
-// }
 
   render() {
-      const r = moment()
-
+      const r = moment(new Date().toLocaleDateString())
+    console.log(r, "this is r")
       const futureBdays = this.props.reminders.filter(reminder => moment(reminder.birthdayThisYear).isSameOrAfter(r)).sort((a,b) => r.diff(a.birthdayThisYear) < r.diff(b.birthdayThisYear) ? 1 : -1)
   const pastBdays = this.props.reminders.filter(reminder =>moment(reminder.birthdayThisYear).isBefore(r))
   .map(reminder => {
@@ -166,11 +149,19 @@ today = () => { if((new Date().getMonth() + 1) < 10 && new Date().getDate() < 10
 }})
 .sort((a,b) => r.diff(moment(a.birthdayThisYear).add(1, 'y')) < r.diff(moment(b.birthdayThisYear).add(1, 'y')) ? 1 : -1)
     console.log(pastBdays)
-     const allTogetherNow = () => futureBdays.concat(' ', pastBdays)
+     const allTogetherNow = () => futureBdays.concat(pastBdays).filter((reminder) =>{
+        return reminder.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || reminder.birthdate.indexOf(this.state.search) !== -1 }).sort((a,b) => r.diff(a.birthdayThisYear) <= r.diff(b.birthdayThisYear) ? 1 : -1)
+     console.log(allTogetherNow())
+
+
+    //  let filteredReminders = this.props.reminders.filter((reminder) =>{
+    //   return reminder.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || reminder.birthdate.indexOf(this.state.search) !== -1 })
 
     return (
       <React.Fragment>
           <button data-target="modal1" className="btn modal-trigger">Add Reminder</button>
+          <input type="text" className="" id="search" placeholder="Search" value={this.state.search} onChange={this.handleFieldChange}/>
+
 
         {/* {this.props.reminders.sort((a, b) => a.birthdate.split("-").splice(1).join("-") > b.birthdate.split("-").splice(1).join("-") ? 1 : -1).map(reminder =>
         <div key={reminder.id}className="container"> */}
@@ -179,7 +170,7 @@ today = () => { if((new Date().getMonth() + 1) < 10 && new Date().getDate() < 10
         <div key={reminder.id} className="container">
 
 
-        <div className="col s12 m7">
+        <div className="col s12 m7 ">
           <h2 className="header">Birthday Alert: <Moment format="MM/DD/YYYY">{reminder.birthdate}</Moment></h2>
           <div className="card horizontal">
             <div className="card-image">

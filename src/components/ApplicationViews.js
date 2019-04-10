@@ -5,6 +5,8 @@ import ReminderList from "./reminder/ReminderList"
 import ReminderManager from "../modules/ReminderManager"
 import Auth0Client from "./authentication/Auth";
 import Callback from "./authentication/Callback"
+import CelebList from "./celeb/CelebList";
+import CelebManager from "../modules/CelebManager"
 
 
 
@@ -53,11 +55,14 @@ export default class ApplicationViews extends Component {
 
         ReminderManager.getAll(this.state.activeUser)
           .then(reminders => newState.reminders = reminders)
+         .then(() => CelebManager.getAll)
+        .then(celebs => newState.celebs = celebs.Birthdays)
+        .then(() => this.setState(newState))
           .then(() => this.setState(newState))
       }
 
       componentDidMount() {
-        // this.runOnLogin()
+        this.runOnLogin()
       }
 
 
@@ -80,6 +85,20 @@ export default class ApplicationViews extends Component {
                 addReminder={this.addReminder}
                 deleteReminder={this.deleteReminder}
                 updateReminder={this.updateReminder}
+                />;
+              } else {
+                Auth0Client.signIn();
+                return null;
+              }
+            }}
+          />
+
+<Route path="/celebrities" render={props => {
+               if (Auth0Client.isAuthenticated()) {
+                return <CelebList {...props}
+                // props go here
+
+
                 />;
               } else {
                 Auth0Client.signIn();

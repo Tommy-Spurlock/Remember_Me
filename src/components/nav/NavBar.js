@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import auth0Client from "../authentication/Auth";
 
 export default class NavBar extends Component {
+
   signOut = () => {
     auth0Client.signOut();
     sessionStorage.clear();
@@ -25,7 +26,6 @@ export default class NavBar extends Component {
 
               <ul id="nav-mobile" className="right hide-on-med-and-down">
                 {/* Routes go here */}
-                <li><input type="text" placeholder="Search" /></li>
               <li> <button
                 className="waves-effect waves-light btn right"
                 onClick={() => {
