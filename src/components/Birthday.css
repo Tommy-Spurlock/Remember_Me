@@ -4,3 +4,13 @@
 .sidenav-trigger {
     margin: 0 0 0 10px;
 }
+
+.container:first-of-type {
+        background-color: #9BF3F0;
+}
+
+.container {
+    margin: auto;
+}
+
+

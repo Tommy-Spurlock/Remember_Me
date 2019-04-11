@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import ModalForm from './ModalForm'
-import ModalEditForm from './ModalEditForm'
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
+import Moment from 'react-moment';
+import moment from 'moment'
+
 
 export default class ReminderList extends Component {
   state = {
+  search: "",
   id: "",
   name: "",
   birthdate: "",
@@ -15,16 +18,7 @@ export default class ReminderList extends Component {
   imageURL: "",
   userId: parseInt(sessionStorage.getItem("credentials"))
 }
-state = {
-  id: "",
-  name: "",
-  birthdate: "",
-  email: "",
-  phoneNumber: "",
-  notes: "",
-  imageURL: "",
-  userId: parseInt(sessionStorage.getItem("credentials"))
-}
+
 
 
 
@@ -50,6 +44,7 @@ updateReminder = evt => {
       id: this.state.id,
       name: this.state.name,
       birthdate: this.state.birthdate,
+      birthdayThisYear: moment(this.state.birthdate,).year(`${new Date().getFullYear()}`).format("YYYY-MM-DD"),
       email: this.state.email,
       phoneNumber: this.state.phoneNumber,
       notes: this.state.notes,
@@ -104,36 +99,79 @@ componentDidMount() {
   // instance.close();
   // instance.destroy();
 
+}
 
-  // ReminderManager.get(this.props.match.params.reminderId)
-  // .then(reminder => {
-  //     this.setState({
-  //         name: reminder.name,
-  //         birthdate: reminder.bir  thdate,
-  //         email: reminder.email,
-  //         phoneNumber: reminder.phoneNumber,
-  //         notes: reminder.notes,
-  //         imageURL: reminder.imageURL,
-  //         userId: parseInt(sessionStorage.getItem("credentials"))
-
-  //     })
-  // })
-
+ dayCheck = (date) => {
+  var thisYear = moment().year();
+  var mom = moment(date).year(thisYear);
+  return mom.calendar(null, {
+    sameDay: '[Today]',
+    nextDay: '[Tomorrow]',
+    nextWeek: 'dddd',
+    lastDay: '[Yesterday]',
+    lastWeek: '[Last] dddd',
+    sameElse: 'DD/MM/YYYY'
+  });
 }
 
 
 
 
+today = () => { if((new Date().getMonth() + 1) < 10 && new Date().getDate() < 10){
+  return `0${new Date().getMonth() + 1}-0${new Date().getDate()}`
+} else if ((new Date().getMonth() + 1) < 10 && new Date().getDate() >= 10){
+  return `0${new Date().getMonth() + 1}-${new Date().getDate()}`
+} else if ((new Date().getMonth() + 1) >= 10 && new Date().getDate() < 10){
+  return `${new Date().getMonth() + 1}-0${new Date().getDate()}`
+} else if ((new Date().getMonth() + 1) >= 10 && new Date().getDate() >= 10){
+  return `${new Date().getMonth() + 1}-${new Date().getDate()}`
+}
+
+
+}
 
   render() {
+      const r = moment(new Date().toLocaleDateString())
+    console.log(r, "this is r")
+      const futureBdays = this.props.reminders.filter(reminder => moment(reminder.birthdayThisYear).isSameOrAfter(r)).sort((a,b) => r.diff(a.birthdayThisYear) < r.diff(b.birthdayThisYear) ? 1 : -1)
+  const pastBdays = this.props.reminders.filter(reminder =>moment(reminder.birthdayThisYear).isBefore(r))
+  .map(reminder => {
+ return  {
+   birthdayThisYear: moment(reminder.birthdayThisYear).add(1, 'y').format("YYYY-MM-DD"),
+    name: reminder.name,
+   phoneNumber: reminder.phoneNumber,
+    birthdate: reminder.birthdate,
+    imageURL: reminder.imageURL,
+    email: reminder.email,
+    notes: reminder.notes,
+    id: reminder.id,
+    userId: reminder.userId,
+}})
+.sort((a,b) => r.diff(moment(a.birthdayThisYear).add(1, 'y')) < r.diff(moment(b.birthdayThisYear).add(1, 'y')) ? 1 : -1)
+    console.log(pastBdays)
+     const allTogetherNow = () => futureBdays.concat(pastBdays).filter((reminder) =>{
+        return reminder.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || reminder.birthdate.indexOf(this.state.search) !== -1 }).sort((a,b) => r.diff(a.birthdayThisYear) <= r.diff(b.birthdayThisYear) ? 1 : -1)
+     console.log(allTogetherNow())
+
+
+    //  let filteredReminders = this.props.reminders.filter((reminder) =>{
+    //   return reminder.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || reminder.birthdate.indexOf(this.state.search) !== -1 })
+
     return (
       <React.Fragment>
           <button data-target="modal1" className="btn modal-trigger">Add Reminder</button>
+          <input type="text" className="" id="search" placeholder="Search" value={this.state.search} onChange={this.handleFieldChange}/>
 
-        {this.props.reminders.map(reminder =>
-        <div key={reminder.id}className="container">
-        <div className="col s12 m7">
-          <h2 className="header">Birthday Alert: {reminder.birthdate}</h2>
+
+        {/* {this.props.reminders.sort((a, b) => a.birthdate.split("-").splice(1).join("-") > b.birthdate.split("-").splice(1).join("-") ? 1 : -1).map(reminder =>
+        <div key={reminder.id}className="container"> */}
+
+{allTogetherNow().map(reminder =>
+        <div key={reminder.id} className="container">
+
+
+        <div className="col s12 m7 ">
+          <h2 className="header">Birthday Alert: <Moment format="MM/DD/YYYY">{reminder.birthdate}</Moment></h2>
           <div className="card horizontal">
             <div className="card-image">
               <img src={reminder.imageURL} />
@@ -250,3 +288,17 @@ componentDidMount() {
     );
   }
 }
+
+
+
+
+
+
+
+// .sort((a,b) => {if(moment(a.birthdayThisYear).isBefore(r)) {
+//   let addOne = moment(a.birthdayThisYear).add(1, 'y')
+//   console.log(addOne, "anything just someting")
+//   debugger;
+//   return r.diff(addOne) < r.diff(b.birthdayThisYear)  ? 1 : -1
+// } else {
+//   return r.diff(a.birthdayThisYear) < r.diff(b.birthdayThisYear) ? 1 : -1}})

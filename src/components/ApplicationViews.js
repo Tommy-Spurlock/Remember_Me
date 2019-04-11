@@ -1,11 +1,11 @@
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import WelcomePage from "./nav/WelcomePage"
 import ReminderList from "./reminder/ReminderList"
 import ReminderManager from "../modules/ReminderManager"
-import UserAPIManager from "../modules/UserManager"
 import Auth0Client from "./authentication/Auth";
 import Callback from "./authentication/Callback"
+import CelebList from "./celeb/CelebList";
 
 
 
@@ -81,6 +81,20 @@ export default class ApplicationViews extends Component {
                 addReminder={this.addReminder}
                 deleteReminder={this.deleteReminder}
                 updateReminder={this.updateReminder}
+                />;
+              } else {
+                Auth0Client.signIn();
+                return null;
+              }
+            }}
+          />
+
+<Route path="/celebrities" render={props => {
+               if (Auth0Client.isAuthenticated()) {
+                return <CelebList {...props}
+                // props go here
+
+
                 />;
               } else {
                 Auth0Client.signIn();

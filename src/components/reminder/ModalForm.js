@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
+import moment from 'moment'
 
 class Modal extends Component {
 
@@ -35,7 +36,8 @@ class Modal extends Component {
 
           const reminder = {
             name: this.state.name,
-            birthdate: this.state.birthdate,
+            birthdate: moment(this.state.birthdate,).format("YYYY-MM-DD"),
+            birthdayThisYear: moment(this.state.birthdate,).year(`${new Date().getFullYear()}`).format("YYYY-MM-DD"),
             email: this.state.email,
             phoneNumber: this.state.phoneNumber,
             notes: this.state.notes,
@@ -147,12 +149,12 @@ class Modal extends Component {
 
           </div>
           <div className="modal-footer">
-            <a href="#" className="modal-close waves-effect waves-red btn-flat" onClick={this.clearState}>
+            <button className="modal-close waves-effect waves-red btn-flat" onClick={this.clearState}>
               Cancel
-            </a>
-            <a href="#" className="modal-close waves-effect waves-green btn-flat" onClick={this.constructNewReminder}>
+            </button>
+            <button className="modal-close waves-effect waves-green btn-flat" onClick={this.constructNewReminder}>
               Save
-            </a>
+            </button>
           </div>
         </div>
       </>

@@ -1,7 +1,6 @@
 import React, { Component } from "react"
-import { Redirect, Link, Route } from "react-router-dom"
+import { Link } from "react-router-dom"
 import M from "materialize-css/dist/js/materialize.min.js";
-import UserManager from "../../modules/UserManager"
 
 
 
@@ -34,6 +33,7 @@ export default class SideNav extends Component {
   <ul id="slide-out" className="sidenav">
   <li><Link to="/reminders">Reminders</Link></li>
   <li><Link to="/calendar">Calender</Link></li>
+  <li><Link to="/celebrities">Celebrities</Link></li>
   <li><Link to="/settings" className="waves-effect" >Settings</Link></li>
 </ul>
 <a href="#" data-target="slide-out" className="sidenav-trigger"><i className="material-icons">menu</i></a>
