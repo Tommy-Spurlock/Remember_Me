@@ -20,7 +20,7 @@ delete(id) {
   return fetch(`${remoteURL}/reminders/${id}`, {
     method: "DELETE"
 })
-.then(e => e.json())
+// .then(e => e.json())
 },
 edit(editedReminder) {
   return fetch(`${remoteURL}/reminders/${editedReminder.id}`, {
