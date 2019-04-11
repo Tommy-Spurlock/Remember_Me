@@ -25,26 +25,41 @@ export default class CelebList extends Component {
         console.log(this.state.celebs)
         return(
             <>
+
+                    <h2 className="header"><Moment format="LLLL"></Moment></h2>
+
             {this.state.celebs.slice(0,3).map(celeb =>
-                <div class="col s12 m7">
-        <h2 class="header">Horizontal Card</h2>
-        <div class="card horizontal">
-          <div class="card-image">
-            <img src="https://lorempixel.com/100/190/nature/6" />
+              <div className="container" key="celeb.celebId">
+                <div className="col s12 m7">
+        <div className="card horizontal">
+          <div className="card-image">
+            <img src={`https://celebritybucks.com/images/celebs/full/${celeb.celebId}.jpg`} />
           </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <p>{celeb.name}</p>
+          <div className="card-stacked">
+            <div className="card-content">
+              <h3>{celeb.name}</h3>
             </div>
-            <div class="card-action">
+            <div className="card-content">
+              <p>Age: {celeb.age}</p>
+            </div>
+            <div className="card-content">
+              <p>Date of Birth: {celeb.dob}</p>
+            </div>
+            <div className="card-content">
+              <p>Twitter: {celeb.twitter}</p>
+            </div>
+            <div className="card-action">
               <a href="#">This is a link</a>
             </div>
           </div>
         </div>
       </div>
+      </div>
 
             )
         }
+
+
         </>
 
         )
