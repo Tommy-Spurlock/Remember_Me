@@ -7,7 +7,7 @@ class Auth {
       domain: AuthConfig.domain,
       audience: `https://${AuthConfig.domain}/userinfo`,
       clientID: AuthConfig.clientId,
-      redirectUri: 'http://localhost:3000/callback',
+      redirectUri: 'https://remember-me-birthday-reminder.herokuapp.com/callback',
       responseType: 'id_token',
       scope: 'openid profile'
     });
@@ -59,7 +59,7 @@ class Auth {
 
   signOut() {
     this.auth0.logout({
-      returnTo: 'http://localhost:3000',
+      returnTo: 'https://remember-me-birthday-reminder.herokuapp.com/',
       clientID: AuthConfig.clientId,
     });
   }
