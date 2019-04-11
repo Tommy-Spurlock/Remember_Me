@@ -7,7 +7,7 @@ class Callback extends Component {
     await auth0Client.handleAuthentication();
 
     // Needs to be refactored, put in its own module, etc
-    fetch(`http://localhost:5002/users?aud=${auth0Client.getProfile().sub}`)
+    fetch(`https://remember-me-birthday-api.herokuapp.com/users?aud=${auth0Client.getProfile().sub}`)
       .then(matchingUser => matchingUser.json())
       .then(matchingUser => {
         console.log("This is our array of users that have the current user's aud", matchingUser);
@@ -25,7 +25,7 @@ class Callback extends Component {
           };
 
           // Post it!!
-          fetch(`http://localhost:5002/users`, {
+          fetch(`https://remember-me-birthday-api.herokuapp.com/users`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
