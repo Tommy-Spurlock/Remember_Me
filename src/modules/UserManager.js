@@ -1,4 +1,4 @@
-const remoteURL = "http://localhost:5002"
+const remoteURL = "https://remember-me-birthday-api.herokuapp.com/"
 
 export default {
   get(id) {
@@ -8,7 +8,7 @@ export default {
     return fetch(`${remoteURL}/users`).then(e => e.json())
   },
   delete(id) {
-    return fetch(`http://localhost:5002/users/${id}`, {
+    return fetch(`${remoteURL}/users/${id}`, {
       method: "DELETE"
   })
   .then(e => e.json())
