@@ -1,4 +1,4 @@
-const remoteURL = "https://remember-me-birthday-api.herokuapp.com/"
+const remoteURL = "https://remember-me-birthday-api.herokuapp.com"
 
 export default {
   get(id) {
