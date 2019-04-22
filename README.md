@@ -1,8 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Welcome to Remember Me: Birthday Reminder
+# Welcome to Remember Me: Birthday Reminder
 
-The Remember Me Birthday Web App will help users remember birthdays of friends, family, pets or celebrities. Users can login and submit birthdays they would like to remember. Users can edit and delete birthdates if needed. Users can store information such as phone number, email address and pictures. Birthdays will display as cards in order of date. The most recent card will Become larger and will display all contact information. This app can be used to help all forgetful people remember the birthdays of others.
+The Remember Me Birthday Web App will help users remember birthdays of friends, family, pets or celebrities. Users can login and submit birthdays they would like to remember. Users can edit and delete birthdates if needed. Users can store information such as phone number, email address and pictures. Birthdays will display as cards in order of date. The most recent card will become larger and will display all contact information. This app can be used to help all forgetful people remember the birthdays of others.
 
 This is my Front-End Capstone for Newforce.
 
