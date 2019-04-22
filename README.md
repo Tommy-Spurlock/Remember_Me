@@ -1,16 +1,22 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Welcome to Remember Me: Birthday Reminder
 
-In the project directory, you can run:
+The Remember Me Birthday Web App will help users remember birthdays of friends, family, pets or celebrities. Users can login and submit birthdays they would like to remember. Users can edit and delete birthdates if needed. Users can store information such as phone number, email address and pictures. Birthdays will display as cards in order of date. The most recent card will Become larger and will display all contact information. This app can be used to help all forgetful people remember the birthdays of others.
 
-### `npm start`
+This is my Front-End Capstone for Newforce.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+visit Remember Me: [https://remember-me-birthday-reminder.herokuapp.com/](https://remember-me-birthday-reminder.herokuapp.com/)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+
+## Tools:
+
+- [x] React
+- [x] Moment
+- [x] React-Moment
+- [x] Javascript
+- [x] Materialize
+
 
 ### `npm test`
 
