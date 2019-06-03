@@ -10,10 +10,8 @@ visit Remember Me: [https://remember-me-birthday-reminder.herokuapp.com/](https:
 
 To run Locally:
 ``````````
-Fork this repo
-Clone it to your machine
 Fork and clone this repo 
-run: npm install react-router-dom 
+npm install react-router-dom 
 in the root, run: npm start
 in the api folder, run: json-server -p 5002 -w database.json
 ```````````
